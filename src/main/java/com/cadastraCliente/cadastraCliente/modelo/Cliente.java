@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Cliente {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private String id;
     private String cpf;
     private String nome;
