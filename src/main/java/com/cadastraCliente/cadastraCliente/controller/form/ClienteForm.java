@@ -1,12 +1,12 @@
 package com.cadastraCliente.cadastraCliente.controller.form;
-
 import com.cadastraCliente.cadastraCliente.modelo.Cliente;
+import com.cadastraCliente.cadastraCliente.modelo.Endereco;
+import com.cadastraCliente.cadastraCliente.repository.ClienteRepository;
 import org.hibernate.validator.constraints.Length;
-
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-public class ClienteForm {
+public class ClienteForm{
     //dados que estão chegando do cliente
 
     @NotNull @NotEmpty
@@ -70,9 +70,7 @@ public class ClienteForm {
         this.usuario = usuario;
     }
 
-
-    public Cliente converter() {
+    public Cliente converter(ClienteRepository clienteRepository) {
         return new Cliente(cpf, nome, telefone, email, senha);
-
     }
 }

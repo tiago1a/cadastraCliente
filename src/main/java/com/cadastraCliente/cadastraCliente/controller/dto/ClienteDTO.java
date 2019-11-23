@@ -1,7 +1,5 @@
 package com.cadastraCliente.cadastraCliente.controller.dto;
-
 import com.cadastraCliente.cadastraCliente.modelo.Cliente;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
