@@ -11,12 +11,14 @@ public class ClienteDTO {
     private String nome;
     private String telefone;
     private String email;
+    private String senha;
 
     public ClienteDTO(Cliente cliente ) {
         this.cpf = cliente.getCpf();
         this.nome = cliente.getNome();
         this.telefone = cliente.getTelefone();
         this.email = cliente.getEmail();
+        this.senha = cliente.getSenha();
     }
 
     public static List<ClienteDTO> converter(List<Cliente> topicos) {
@@ -37,6 +39,10 @@ public class ClienteDTO {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getSenha() {
+        return senha;
     }
 
 }
