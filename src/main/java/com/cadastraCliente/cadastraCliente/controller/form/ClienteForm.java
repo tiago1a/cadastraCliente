@@ -1,35 +1,13 @@
-package com.cadastraCliente.cadastraCliente.modelo;
+package com.cadastraCliente.cadastraCliente.controller.form;
 
+import com.cadastraCliente.cadastraCliente.modelo.Cliente;
 
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
-public class Cliente{
-
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+public class ClienteForm {
+    //dados que estão chegando do cliente
     private String cpf;
     private String nome;
     private String telefone;
     private String email;
-    private String usuario;
-    private String senha;
-
-    public  Cliente(){
-    }
-
-    public Cliente(String cpf, String nome, String telefone, String email, String senha) {
-        this.cpf = cpf;
-        this.cpf = nome;
-        this.cpf = telefone;
-        this.cpf = email;
-        this.cpf = senha;
-
-    }
 
     public String getCpf() {
         return cpf;
@@ -63,19 +41,18 @@ public class Cliente{
         this.email = email;
     }
 
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
     public String getSenha() {
         return senha;
     }
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    private String senha;
+
+    public Cliente converter() {
+        return new Cliente(cpf, nome, telefone, email, senha);
+
     }
 }

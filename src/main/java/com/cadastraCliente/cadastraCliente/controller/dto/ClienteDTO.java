@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ClienteDTO {
-
+    //dados que estou buscando
     private String cpf;
     private String nome;
     private String telefone;
@@ -17,7 +17,6 @@ public class ClienteDTO {
         this.nome = cliente.getNome();
         this.telefone = cliente.getTelefone();
         this.email = cliente.getEmail();
-
     }
 
     public static List<ClienteDTO> converter(List<Cliente> topicos) {
