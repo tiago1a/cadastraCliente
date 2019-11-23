@@ -1,6 +1,7 @@
 package com.cadastraCliente.cadastraCliente.controller;
 
 import com.cadastraCliente.cadastraCliente.controller.dto.ClienteDTO;
+import com.cadastraCliente.cadastraCliente.controller.form.AtualizaClienteForm;
 import com.cadastraCliente.cadastraCliente.controller.form.ClienteForm;
 import com.cadastraCliente.cadastraCliente.modelo.Cliente;
 
@@ -38,15 +39,20 @@ public class ClienteController {
         clienteRepository.save(cliente);
 
         //montando o retorno de sucesso
-        URI uri = uribilder.path("/{id}").buildAndExpand(cliente.getCpf()).toUri();
+        URI uri = uribilder.path("/{id}").buildAndExpand(cliente.getId()).toUri();
         //retornar o 201 de sucesso
         return ResponseEntity.created(uri).body(new ClienteDTO(cliente));
     }
 
-    @GetMapping("/{cpf}")
-    public ClienteDTO detalharCliente(@PathVariable String cpf) {
-        Cliente cliente = clienteRepository.getOne(Long.valueOf(cpf));
+    @GetMapping("/{id}")
+    public ClienteDTO detalharCliente(@PathVariable Long id) {
+        Cliente cliente = clienteRepository.getOne(id);
         return new ClienteDTO(cliente);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<ClienteDTO> atualizaCliente(@PathVariable Long id, @RequestBody @Valid AtualizaClienteForm atualizaClienteForm ){
+        Cliente cliente = atualizaClienteForm.atualiza(id, clienteRepository);
+
+    }
 }

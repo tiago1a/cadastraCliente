@@ -1,16 +1,13 @@
 package com.cadastraCliente.cadastraCliente.controller.form;
 
 import com.cadastraCliente.cadastraCliente.modelo.Cliente;
+import com.cadastraCliente.cadastraCliente.repository.ClienteRepository;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-public class ClienteForm {
-    //dados que estão chegando do cliente
-
-    @NotNull @NotEmpty
-    private String cpf;
+public class AtualizaClienteForm {
     @NotNull @NotEmpty @Length(min = 3, max = 100, message = "Nome deve ter entre 3 e 100")
     private String nome;
     @NotNull @NotEmpty
@@ -18,17 +15,7 @@ public class ClienteForm {
     @NotNull @NotEmpty
     private String email;
     @NotNull @NotEmpty
-    private String usuario;
-    @NotNull @NotEmpty
     private String senha;
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
 
     public String getNome() {
         return nome;
@@ -62,17 +49,12 @@ public class ClienteForm {
         this.senha = senha;
     }
 
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-
-    public Cliente converter() {
-        return new Cliente(cpf, nome, telefone, email, senha);
-
+    public Cliente atualiza(Long id, ClienteRepository clienteRepository) {
+        //buscando cliente através do id
+        Cliente cliente = clienteRepository.getOne(id);
+        cliente.setNome(this.nome);
+        cliente.setTelefone(this.telefone);
+        cliente.setEmail(this.email);
+        cliente.setSenha(this.senha);
     }
 }

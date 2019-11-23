@@ -1,4 +1,4 @@
-package config.validacao;
+package com.cadastraCliente.cadastraCliente.config.validacao;
 
 public class ErroFormularioDTO {
     private String campo;

@@ -11,6 +11,7 @@ public class ClienteDTO {
     private String nome;
     private String telefone;
     private String email;
+    private String usuario;
     private String senha;
 
     public ClienteDTO(Cliente cliente ) {
@@ -18,6 +19,7 @@ public class ClienteDTO {
         this.nome = cliente.getNome();
         this.telefone = cliente.getTelefone();
         this.email = cliente.getEmail();
+        this.usuario = cliente.getUsuario();
         this.senha = cliente.getSenha();
     }
 
@@ -43,6 +45,9 @@ public class ClienteDTO {
 
     public String getSenha() {
         return senha;
+    }
+    public String getUsuario() {
+        return usuario;
     }
 
 }
