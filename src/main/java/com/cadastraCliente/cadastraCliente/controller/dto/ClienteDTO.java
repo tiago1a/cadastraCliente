@@ -12,7 +12,7 @@ public class ClienteDTO {
     private String telefone;
     private String email;
 
-    public ClienteDTO(Cliente cliente ){
+    public ClienteDTO(Cliente cliente ) {
         this.cpf = cliente.getCpf();
         this.nome = cliente.getNome();
         this.telefone = cliente.getTelefone();
@@ -20,11 +20,9 @@ public class ClienteDTO {
 
     }
 
-
     public static List<ClienteDTO> converter(List<Cliente> topicos) {
         return topicos.stream().map(ClienteDTO::new).collect(Collectors.toList());
     }
-
 
     public String getCpf() {
         return cpf;
