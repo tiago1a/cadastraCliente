@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 public class Endereco {
 
-    @Id //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String cep;
     private String logradouro;
     private String bairro;

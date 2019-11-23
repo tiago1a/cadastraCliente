@@ -3,6 +3,7 @@ package com.cadastraCliente.cadastraCliente.controller.dto;
 import com.cadastraCliente.cadastraCliente.modelo.Cliente;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ClienteDTO {
 
@@ -19,8 +20,11 @@ public class ClienteDTO {
 
     }
 
-//    public static List<ClienteDTO> converte(List<Object> asList) {
-//    }
+
+    public static List<ClienteDTO> converter(List<Cliente> topicos) {
+        return topicos.stream().map(ClienteDTO::new).collect(Collectors.toList());
+    }
+
 
     public String getCpf() {
         return cpf;

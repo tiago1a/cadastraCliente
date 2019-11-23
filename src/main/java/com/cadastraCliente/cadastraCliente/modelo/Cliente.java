@@ -1,5 +1,7 @@
 package com.cadastraCliente.cadastraCliente.modelo;
 
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,7 +10,8 @@ import javax.persistence.Id;
 @Entity
 public class Cliente {
 
-    private String id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private String cpf;
     private String nome;
     private String telefone;
