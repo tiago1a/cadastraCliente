@@ -3,6 +3,8 @@ import com.cadastraCliente.cadastraCliente.controller.dto.ClienteDTO;
 import com.cadastraCliente.cadastraCliente.controller.form.AtualizaClienteForm;
 import com.cadastraCliente.cadastraCliente.controller.form.ClienteForm;
 import com.cadastraCliente.cadastraCliente.modelo.Cliente;
+import com.cadastraCliente.cadastraCliente.modelo.Endereco;
+import com.cadastraCliente.cadastraCliente.repository.EnderecoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,9 @@ public class ClienteController {
     @Autowired
     public ClienteRepository clienteRepository;
 
+    @Autowired
+    private EnderecoRepository enderecoRepository;
+
     @GetMapping
    public List<ClienteDTO> listaCliente(String nomeCliente) {
         if(nomeCliente == null){
@@ -32,16 +37,16 @@ public class ClienteController {
         }
     }
 
-    @PostMapping
+
     @Transactional
+    @PostMapping
     public ResponseEntity<ClienteDTO> cadsatrarCliente(@RequestBody @Valid ClienteForm clienteForm, UriComponentsBuilder uriBuilder){
         //converter form para cliente
-        Cliente cliente = clienteForm.converter(clienteRepository);
+        Cliente cliente = clienteForm.converter();
         clienteRepository.save(cliente);
 
         //montando o retorno de sucesso
-        URI uri = uriBuilder.path("/{id}").buildAndExpand(cliente.getId()).toUri();
-
+        URI uri = uriBuilder.path("/cliente/{id}").buildAndExpand(cliente.getId()).toUri();
         //retornar o 201 de sucesso
         return ResponseEntity.created(uri).body(new ClienteDTO(cliente));
     }

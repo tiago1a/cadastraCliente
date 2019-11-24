@@ -2,6 +2,7 @@ package com.cadastraCliente.cadastraCliente.controller.form;
 import com.cadastraCliente.cadastraCliente.modelo.Cliente;
 import com.cadastraCliente.cadastraCliente.modelo.Endereco;
 import com.cadastraCliente.cadastraCliente.repository.ClienteRepository;
+import com.cadastraCliente.cadastraCliente.repository.EnderecoRepository;
 import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -21,6 +22,17 @@ public class ClienteForm{
     private String usuario;
     @NotNull @NotEmpty
     private String senha;
+
+    private String cep;
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+
 
     public String getCpf() {
         return cpf;
@@ -70,7 +82,7 @@ public class ClienteForm{
         this.usuario = usuario;
     }
 
-    public Cliente converter(ClienteRepository clienteRepository) {
-        return new Cliente(cpf, nome, telefone, email, senha);
+    public Cliente converter() {
+        return new Cliente(cpf, nome, telefone, email, usuario,senha);
     }
 }

@@ -16,12 +16,13 @@ public class Cliente{
     public  Cliente(){
     }
 
-    public Cliente(String cpf, String nome, String telefone, String email, String senha) {
+    public Cliente(String cpf, String nome, String telefone, String email, String usuario ,String senha) {
         this.cpf = cpf;
-        this.cpf = nome;
-        this.cpf = telefone;
-        this.cpf = email;
-        this.cpf = senha;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.usuario = usuario;
+        this.senha = senha;
     }
 
     public long getId() {
