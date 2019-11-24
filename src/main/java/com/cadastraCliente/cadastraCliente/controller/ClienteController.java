@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import com.cadastraCliente.cadastraCliente.repository.ClienteRepository;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.util.UriComponentsBuilder;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
@@ -23,9 +24,7 @@ public class ClienteController {
     @Autowired
     public ClienteRepository clienteRepository;
 
-    @Autowired
-    private EnderecoRepository enderecoRepository;
-
+    @CrossOrigin
     @GetMapping
    public List<ClienteDTO> listaCliente(String nomeCliente) {
         if(nomeCliente == null){
@@ -37,7 +36,7 @@ public class ClienteController {
         }
     }
 
-
+    @CrossOrigin
     @Transactional
     @PostMapping
     public ResponseEntity<ClienteDTO> cadsatrarCliente(@RequestBody @Valid ClienteForm clienteForm, UriComponentsBuilder uriBuilder){
@@ -51,12 +50,14 @@ public class ClienteController {
         return ResponseEntity.created(uri).body(new ClienteDTO(cliente));
     }
 
+    @CrossOrigin
     @GetMapping("/{id}")
     public ClienteDTO detalharCliente(@PathVariable Long id) {
         Cliente cliente = clienteRepository.getOne(id);
         return new ClienteDTO(cliente);
     }
 
+    @CrossOrigin
     @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<ClienteDTO> atualizaCliente(@PathVariable Long id, @RequestBody @Valid AtualizaClienteForm atualizaClienteForm ){

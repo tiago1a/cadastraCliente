@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 public class ClienteDTO {
     //dados que estou buscando
+    private long id;
     private String cpf;
     private String nome;
     private String telefone;
@@ -13,6 +14,7 @@ public class ClienteDTO {
     private String senha;
 
     public ClienteDTO(Cliente cliente ) {
+        this.id = cliente.getId();
         this.cpf = cliente.getCpf();
         this.nome = cliente.getNome();
         this.telefone = cliente.getTelefone();
@@ -23,6 +25,10 @@ public class ClienteDTO {
 
     public static List<ClienteDTO> converter(List<Cliente> topicos) {
         return topicos.stream().map(ClienteDTO::new).collect(Collectors.toList());
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getCpf() {
