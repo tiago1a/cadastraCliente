@@ -49,7 +49,8 @@ public class AtualizaClienteForm {
 
     public Cliente atualiza(Long id, ClienteRepository clienteRepository) {
         //buscando cliente através do id
-        Cliente cliente = clienteRepository.getOne(id);
+        Cliente cliente = clienteRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("id nao encontrado"));
         cliente.setNome(this.nome);
         cliente.setTelefone(this.telefone);
         cliente.setEmail(this.email);

@@ -65,6 +65,7 @@ public class ClienteController {
         return ResponseEntity.ok(new ClienteDTO(cliente));
     }
 
+    @CrossOrigin
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity removerCliente(@PathVariable Long id){
