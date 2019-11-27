@@ -1,4 +1,4 @@
-package com.cadastraCliente.cadastraCliente.config.validacao;
+package com.cadastraCliente.cadastraCliente.validacao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
